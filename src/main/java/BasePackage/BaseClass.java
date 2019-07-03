@@ -5,6 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 
 public class BaseClass {
 
@@ -46,4 +51,7 @@ public class BaseClass {
         return PAGE_TITLE;
     }
 
+
 }
+
+

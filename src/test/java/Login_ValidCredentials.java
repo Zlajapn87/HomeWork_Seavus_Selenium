@@ -1,3 +1,4 @@
+import BasePackage.BaseClass;
 import DataProviders.LoginCredentialsProvider;
 import Pages.HomePage;
 import Pages.LoginPage;
@@ -9,6 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.*;
+import java.util.Properties;
 
 public class Login_ValidCredentials {
 
@@ -26,21 +30,22 @@ public class Login_ValidCredentials {
         lPage = PageFactory.initElements(driver, LoginPage.class);
         hPage = PageFactory.initElements(driver, HomePage.class);
     }
-
-
     @AfterClass
     public void tearDown() {
         driver.quit();
     }
 
 
-    @Test(dataProvider = "Valid credentials", dataProviderClass = LoginCredentialsProvider.class)
-    public void LoginVerification(String email, String password) throws InterruptedException {
+
+
+
+    @Test
+    public void LoginVerification() throws InterruptedException, IOException {
         lPage.loadPage();
-        lPage.setEmail(email);
+        lPage.setEmail(lPage.getPropertyValueEmail());
         lPage.clickOnNextButton();
         lPage.wait.until(ExpectedConditions.elementToBeClickable(lPage.returnPassField()));
-        lPage.setPassword(password);
+        lPage.setPassword(lPage.getPropertyValuePasswrod());
         lPage.clickOnNextPasswordButton();
         Assert.assertTrue(hPage.credentialsCheck());
     }
