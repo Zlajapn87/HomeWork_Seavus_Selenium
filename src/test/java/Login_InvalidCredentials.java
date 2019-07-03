@@ -1,3 +1,4 @@
+import DataProviders.LoginCredentialsProvider;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.WrongCredentialsPage;
@@ -36,7 +37,7 @@ public class Login_InvalidCredentials {
     }
 
 
-    @Test(dataProvider = "credentials", dataProviderClass = InvalidLoginCredentialsProvider.class)
+    @Test(dataProvider = "Invalid credentials", dataProviderClass = LoginCredentialsProvider.class)
     public void LoginVerification(String email, String password) throws InterruptedException {
         lPage.loadPage();
         lPage.setEmail(email);

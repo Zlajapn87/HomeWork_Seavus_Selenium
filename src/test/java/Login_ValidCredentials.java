@@ -1,3 +1,4 @@
+import DataProviders.LoginCredentialsProvider;
 import Pages.HomePage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
@@ -33,7 +34,7 @@ public class Login_ValidCredentials {
     }
 
 
-    @Test(dataProvider = "credentials", dataProviderClass = ValidLoginCredentialsProvider.class)
+    @Test(dataProvider = "Valid credentials", dataProviderClass = LoginCredentialsProvider.class)
     public void LoginVerification(String email, String password) throws InterruptedException {
         lPage.loadPage();
         lPage.setEmail(email);
