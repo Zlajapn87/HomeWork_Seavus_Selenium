@@ -19,7 +19,7 @@ public class WrongCredentialsPage extends BaseClass {
         wait.until(ExpectedConditions.visibilityOf(text_message));
 
         if (text_message.isDisplayed()) {
-            System.out.println("Wrong Credentials");
+            System.out.println("Inserted credentials are invalid, please check username and password");
             return true;
         }
         return false;
