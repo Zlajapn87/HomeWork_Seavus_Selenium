@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.*;
@@ -39,13 +40,13 @@ public class Login_ValidCredentials {
 
 
 
-    @Test
-    public void LoginVerification() throws InterruptedException, IOException {
+    @Test(dataProvider = "Valid credentials", dataProviderClass = LoginCredentialsProvider.class)
+    public void LoginVerification(String email, String password) throws InterruptedException, IOException {
         lPage.loadPage();
-        lPage.setEmail(lPage.getPropertyValueEmail());
+        lPage.setEmail(email);
         lPage.clickOnNextButton();
         lPage.wait.until(ExpectedConditions.elementToBeClickable(lPage.returnPassField()));
-        lPage.setPassword(lPage.getPropertyValuePasswrod());
+        lPage.setPassword(password);
         lPage.clickOnNextPasswordButton();
         Assert.assertTrue(hPage.credentialsCheck());
     }
